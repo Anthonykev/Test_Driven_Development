@@ -1,11 +1,14 @@
 function findSpaceship(map) {
+  let result = ""; // result Variable erstellt
   if (typeof map !== "string") {
     return "no String";
   }
 
   if (map.includes("X")) {
-    return "found X";
+    result = "found X";
   } else {
-    return map.length;
+    result = map.length;
   }
+
+  return result;
 }

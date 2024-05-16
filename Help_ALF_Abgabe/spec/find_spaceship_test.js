@@ -16,4 +16,11 @@ describe("Find Spaceship", function () {
     const result = findSpaceship(map);
     expect(result).toEqual("found X");
   });
+
+  it('should find "Multiline string  " in the String ', function () {
+    const map =
+      "..........\n......X...\n..........\n..........\n..........\n..........";
+    const result = findSpaceship(map);
+    expect(result).toEqual("found X");
+  });
 });

@@ -1,3 +1,3 @@
 function findSpaceship(map) {
-  let input = map;
+  return map.length;
 }

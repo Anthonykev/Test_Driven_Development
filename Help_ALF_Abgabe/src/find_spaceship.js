@@ -10,5 +10,9 @@ function findSpaceship(map) {
     result = "Spaceship lost forever";
   }
 
+  let rows = map.split("\n").reverse();
+  console.log(rows);
+  
+  }
   return result;
 }

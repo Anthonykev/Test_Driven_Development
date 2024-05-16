@@ -7,7 +7,7 @@ function findSpaceship(map) {
   if (map.includes("X")) {
     result = "found X";
   } else {
-    result = map.length;
+    result = "Spaceship lost forever";
   }
 
   return result;

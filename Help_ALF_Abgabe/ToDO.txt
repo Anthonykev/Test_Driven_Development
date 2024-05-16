@@ -1,6 +1,5 @@
-1. String einlesen --> return 'should return string length for "..." '
+1. wenn kein X da ist --> return "Spaceship lost forever"  
 2. String überprüfen --> return "no string"
 3. X erkennen --> return "found X"   
-4. wenn kein X da ist --> return "Spaceship lost forever" 
-5. Mehrzeiliger String 
-6. postion zurückgeben
+4. Mehrzeiliger String 
+5. postion zurückgeben

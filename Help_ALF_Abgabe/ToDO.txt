@@ -1,0 +1,6 @@
+1. String einlesen
+2. String überprüfen
+3. X erkennen
+4. wenn kein X da ist, dannn "Spaceship lost forever" return
+5. Mehrzeiliger String
+6. postion zurückgeben

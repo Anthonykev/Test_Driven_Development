@@ -1,3 +1,11 @@
 function findSpaceship(map) {
-  return typeof map !== "string" ? "no String" : map.length;
+  if (typeof map !== "string") {
+    return "no String";
+  }
+
+  if (map.includes("X")) {
+    return "found X";
+  } else {
+    return map.length;
+  }
 }

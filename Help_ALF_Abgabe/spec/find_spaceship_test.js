@@ -10,4 +10,10 @@ describe("Find Spaceship", function () {
     const result = findSpaceship(map);
     expect(result).toEqual("no String");
   });
+
+  it('should return find "X" in the String ', function () {
+    const map = ".X.";
+    const result = findSpaceship(map);
+    expect(result).toEqual(3);
+  });
 });

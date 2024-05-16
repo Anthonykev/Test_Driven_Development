@@ -5,7 +5,7 @@ describe("Find Spaceship", function () {
     expect(result).toEqual(3);
   });
 
-  it('should return no string for "100" ', function () {
+  it('should return "no string" for "100" ', function () {
     const map = 100;
     const result = findSpaceship(map);
     expect(result).toEqual("no String");
@@ -15,5 +15,11 @@ describe("Find Spaceship", function () {
     const map = "..X..";
     const result = findSpaceship(map);
     expect(result).toEqual("found X");
+  });
+
+  it('should return "Spaceship lost forever"', function () {
+    const map = ".......";
+    const result = findSpaceship(map);
+    expect(result).toEqual("Spaceship lost forever");
   });
 });

@@ -102,11 +102,11 @@ describe("Gilded Rose", function () {
     for (let i = 0; i < 5; i++) {
       update_quality();
     }
-    expect(items[0].quality).toEqual(15);
-    // expect(items[1].quality).toEqual(5);
-    expect(items[2].quality).toEqual(2);
-    expect(items[3].quality).toEqual(80);
-    expect(items[4].quality).toEqual(25);
-    expect(items[5].quality).toEqual(0);
+    expect(items[0].quality).toEqual(15); // +5 Dexterity Vest
+    expect(items[1].quality).toEqual(8); // Aged Brie
+    expect(items[2].quality).toEqual(2); // Elixir of the Mongoose
+    expect(items[3].quality).toEqual(80); // Sulfuras, Hand of Ragnaros
+    expect(items[4].quality).toEqual(25); // Backstage passes
+    expect(items[5].quality).toEqual(0); // Conjured Mana Cake
   });
 });

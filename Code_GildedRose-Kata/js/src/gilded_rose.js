@@ -17,9 +17,11 @@ function update_quality() {
   for (var i = 0; i < items.length; i++) {
     const item = items[i];
 
-    if (item.name !== "Sulfuras, Hand of Ragnaros") {
-      item.sell_in -= 1;
+    if (item.name === "Sulfuras, Hand of Ragnaros") {
+      continue; // Skip Sulfuras
     }
+
+    item.sell_in -= 1;
 
     if (item.name === "Aged Brie") {
       updateAgedBrie(item);

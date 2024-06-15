@@ -1,5 +1,0 @@
-1. wenn kein X da ist --> return "Spaceship lost forever"  
-2. String überprüfen --> return "no string"
-3. X erkennen --> return "found X[]"   
-4. Mehrzeiliger String --> return "found X[7,2] " trotz multiline string
-5. postion zurückgeben

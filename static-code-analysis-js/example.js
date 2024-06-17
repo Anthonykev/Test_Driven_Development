@@ -5,4 +5,4 @@ function add(a, b) {
 }
 
 console.log(add(5, 10));
-let unusedVar;
+// let unusedVar;

@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["html"],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-var": "error",
+    "eqeqeq": "error",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"],
+    "no-console": "warn",
+    "no-undef": "error",
+    "no-fallthrough": "error"
+  }
+}

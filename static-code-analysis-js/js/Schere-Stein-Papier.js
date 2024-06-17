@@ -41,7 +41,7 @@ if (playerScore == 10) {
   console.log("Player reached 10 points");
 }
 
-let computerChoice = "rock";
+// let computerChoice = "rock";
 
 console.log("This is a debugging statement");
 

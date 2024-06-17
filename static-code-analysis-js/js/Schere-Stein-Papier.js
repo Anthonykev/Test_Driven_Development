@@ -44,11 +44,9 @@ if (playerScore == 10) {
 // let computerChoice = "rock";
 
 console.log("This is a debugging statement");
-
 function sayHello(name) {
   console.log("Hello, " + name);
   return;
-  name = name + "!";
 }
 
 sayHello("World");

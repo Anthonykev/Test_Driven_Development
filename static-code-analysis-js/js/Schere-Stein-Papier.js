@@ -57,7 +57,7 @@ const obj = {
   prop3: "value3",
 };
 
-const { prop1, prop2 } = obj;
+// const { prop1, prop2 } = obj;
 
 playGame("rock");
 playGame("paper");

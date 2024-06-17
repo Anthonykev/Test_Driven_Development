@@ -37,7 +37,7 @@ function playGame(playerChoice) {
 
 // let unusedVar = 42;
 
-if ((playerScore = 10)) {
+if (playerScore == 10) {
   console.log("Player reached 10 points");
 }
 

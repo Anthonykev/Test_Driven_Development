@@ -31,9 +31,9 @@ function playGame(playerChoice) {
   );
 }
 
-function unusedFunction() {
-  console.log("This function is never used");
-}
+// function unusedFunction() {
+//   console.log("This function is never used");
+// }
 
 let unusedVar = 42;
 

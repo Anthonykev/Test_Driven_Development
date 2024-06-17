@@ -35,7 +35,7 @@ function playGame(playerChoice) {
 //   console.log("This function is never used");
 // }
 
-let unusedVar = 42;
+// let unusedVar = 42;
 
 if ((playerScore = 10)) {
   console.log("Player reached 10 points");

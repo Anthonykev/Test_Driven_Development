@@ -74,6 +74,6 @@ console.log("This is a missing semicolon");
 
 // const anotherVar = "Another unused variable";
 
-if ((playerScore = 20)) {
+if (playerScore == 20) {
   console.log("Player reached 20 points");
 }

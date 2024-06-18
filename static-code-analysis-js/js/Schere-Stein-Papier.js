@@ -31,49 +31,32 @@ function playGame(playerChoice) {
   );
 }
 
-// function unusedFunction() {
-//   console.log("This function is never used");
-// }
-
-// let unusedVar = 42;
-
-if (playerScore == 10) {
-  console.log("Player reached 10 points");
-}
-
-// let computerChoice = "rock";
-
-console.log("This is a debugging statement");
 function sayHello(name) {
   console.log("Hello, " + name);
   return;
 }
 
-sayHello("World");
+sayHello("Anthony");
 
-// const obj = {
-//   prop1: "value1",
-//   prop2: "value2",
-//   prop3: "value3",
-// };
+console.log("This is a debugging statement");
 
-// const { prop1, prop2 } = obj;
+if (playerScore === 10) {
+  console.log("Player reached 10 points");
+}
 
-playGame("rock");
-playGame("paper");
-playGame("scissors");
-
-// let playerChoice = "rock";
-// var exampleVar = "This should be let or const";
-console.log("This is a missing semicolon");
-
-// // Zusätzliche Fehler:
-// function anotherFunction() {
-//   console.log("This is another function");
-// }
-
-// const anotherVar = "Another unused variable";
-
-if (playerScore == 20) {
+if (playerScore === 20) {
   console.log("Player reached 20 points");
 }
+
+// Funktion zum Testen des Spiels in der Konsole
+function testGame() {
+  const choices = ["rock", "paper", "scissors"];
+  for (let i = 0; i < 10; i++) {
+    const playerChoice = choices[Math.floor(Math.random() * 3)];
+    playGame(playerChoice);
+  }
+}
+
+testGame();
+
+console.log("This is a missing semicolon");

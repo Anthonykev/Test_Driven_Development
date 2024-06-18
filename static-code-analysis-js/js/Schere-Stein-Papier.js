@@ -63,7 +63,7 @@ playGame("rock");
 playGame("paper");
 playGame("scissors");
 
-playerChoice = "rock";
+// let playerChoice = "rock";
 var exampleVar = "This should be let or const";
 console.log("This is a missing semicolon");
 

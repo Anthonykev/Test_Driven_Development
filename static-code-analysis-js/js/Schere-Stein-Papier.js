@@ -64,15 +64,15 @@ playGame("paper");
 playGame("scissors");
 
 // let playerChoice = "rock";
-var exampleVar = "This should be let or const";
+// var exampleVar = "This should be let or const";
 console.log("This is a missing semicolon");
 
-// Zusätzliche Fehler:
-function anotherFunction() {
-  console.log("This is another function");
-}
+// // Zusätzliche Fehler:
+// function anotherFunction() {
+//   console.log("This is another function");
+// }
 
-const anotherVar = "Another unused variable";
+// const anotherVar = "Another unused variable";
 
 if ((playerScore = 20)) {
   console.log("Player reached 20 points");

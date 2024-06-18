@@ -1,6 +1,6 @@
 // rock-paper-scissors.js
-
 const choices = ["rock", "paper", "scissors"];
+
 let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
@@ -51,11 +51,11 @@ function sayHello(name) {
 
 sayHello("World");
 
-const obj = {
-  prop1: "value1",
-  prop2: "value2",
-  prop3: "value3",
-};
+// const obj = {
+//   prop1: "value1",
+//   prop2: "value2",
+//   prop3: "value3",
+// };
 
 // const { prop1, prop2 } = obj;
 

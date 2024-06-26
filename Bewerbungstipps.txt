@@ -1,0 +1,345 @@
+#ifndef CARD_H
+#define CARD_H
+
+#include <vector>
+#include <string>
+#include <iostream>
+#include <stdexcept>
+#include <memory>
+#include <algorithm>
+
+
+
+using namespace std;
+
+
+class Card {
+public:
+    Card(const std::string& color);
+    virtual ~Card(); // Virtueller Destruktor
+
+    std::string getColor() const;
+    virtual void printCard() const = 0;
+
+protected:
+    std::string color;
+};
+
+#endif // CARD_H
+
+
+//-------------------------------------------------------------------------------------
+
+#include "Card.h"
+
+Card::Card(const std::string& color) : color(color) {}
+
+Card::~Card() {} // Implementierung des virtuellen Destruktors
+
+std::string Card::getColor() const {
+    return color;
+}
+
+
+//-------------------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------------------
+
+
+#ifndef GAME_H
+#define GAME_H
+
+#include <vector>
+#include <memory>
+#include <string>
+#include "Card.h"
+#include "Player.h"
+
+class Game {
+public:
+    Game();
+    ~Game();
+    void addPlayerByName(const std::string& name);
+    void createCards();
+    void shuffleCards();
+    void dealCards();
+    void startGame();
+    void showPlayerCards() const;
+    void showDeckCards() const;
+
+private:
+    std::vector<Player> players;
+    std::vector<std::shared_ptr<Card>> deck;
+};
+
+#endif // GAME_H
+
+//-------------------------------------------------------------------------------------
+
+
+#include "Game.h"
+#include "NumberCard.h"
+#include "SpecialCard.h"
+#include <algorithm>
+#include <iostream>
+#include <stdexcept>
+
+Game::Game() {} // Implementiere den Konstruktor
+
+Game::~Game() {} // Implementiere den Destruktor
+
+void Game::addPlayerByName(const std::string& name) {
+    players.push_back(Player(name));
+}
+
+void Game::createCards() {
+    const std::array<std::string, 4> colors = { "red", "green", "yellow", "blue" };
+    for (const auto& color : colors) {
+        for (int number = 0; number <= 9; ++number) {
+            deck.push_back(std::make_shared<NumberCard>(color, number));
+        }
+    }
+    deck.push_back(std::make_shared<SpecialCard>("black", "draw 4"));
+    deck.push_back(std::make_shared<SpecialCard>("black", "draw 4"));
+    deck.push_back(std::make_shared<SpecialCard>("black", "wild"));
+    deck.push_back(std::make_shared<SpecialCard>("black", "wild"));
+}
+
+void Game::shuffleCards() {
+    std::random_shuffle(deck.begin(), deck.end());
+}
+
+void Game::dealCards() {
+    if (players.empty()) {
+        throw std::logic_error("No players in the game!");
+    }
+
+    const int cardsPerPlayer = 7;
+    for (auto& player : players) {
+        for (int i = 0; i < cardsPerPlayer; ++i) {
+            if (deck.empty()) {
+                throw std::logic_error("Not enough cards in the deck!");
+            }
+            player.addCard(deck.back());
+            deck.pop_back();
+        }
+    }
+}
+
+void Game::startGame() {
+    createCards();
+    shuffleCards();
+    dealCards();
+}
+
+void Game::showPlayerCards() const {
+    for (const auto& player : players) {
+        player.showCards();
+    }
+}
+
+void Game::showDeckCards() const {
+    std::cout << "Remaining cards in the deck:" << std::endl;
+    for (const auto& card : deck) {
+        card->printCard();
+    }
+}
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
+#ifndef NUMBERCARD_H
+#define NUMBERCARD_H
+
+#include "Card.h"
+
+
+class NumberCard : public Card
+{
+    public:
+       NumberCard(const std::string& color, int number);
+        virtual ~NumberCard();
+         void printCard() const override;
+
+
+
+    private:
+        int number;
+
+};
+
+#endif // NUMBERCARD_H
+
+
+//-------------------------------------------------------------------------------------
+
+#include "NumberCard.h"
+
+
+NumberCard::NumberCard(const std::string& color, int number)
+    : Card(color), number(number) {}
+
+
+NumberCard::~NumberCard()
+{
+    //dtor
+}
+
+void NumberCard::printCard() const {
+    std::cout << "NumberCard: Color=" << color << ", Number=" << number << std::endl;
+}
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
+
+#ifndef PLAYER_H
+#define PLAYER_H
+
+#include <vector>
+#include <string>
+#include <memory>
+#include "Card.h"
+
+class Player {
+public:
+    Player(const std::string& name);
+    virtual ~Player();
+    void addCard(std::shared_ptr<Card> card);
+    Player& operator+=(std::shared_ptr<Card> card);
+    void showCards() const;
+
+private:
+    std::string name;
+    std::vector<std::shared_ptr<Card>> playerDeck;
+};
+
+#endif // PLAYER_H
+
+//-------------------------------------------------------------------------------------
+
+#include "Player.h"
+#include <iostream>
+
+Player::Player(const std::string& name) : name(name) {}
+
+Player::~Player() {} // Implementiere den Destruktor
+
+void Player::addCard(std::shared_ptr<Card> card) {
+    playerDeck.push_back(card);
+}
+
+Player& Player::operator+=(std::shared_ptr<Card> card) {
+    addCard(card);
+    return *this;
+}
+
+void Player::showCards() const {
+    std::cout << "Player " << name << " has the following cards:" << std::endl;
+    for (const auto& card : playerDeck) {
+        card->printCard();
+    }
+}
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
+#ifndef SPECIALCARD_H
+#define SPECIALCARD_H
+
+#include "Card.h"
+
+
+class SpecialCard : public Card {
+public:
+    SpecialCard(const std::string& color, const std::string& special);
+    virtual ~SpecialCard() = default; // Virtueller Destruktor
+    void printCard() const override;
+
+private:
+    std::string special;
+};
+
+#endif // SPECIALCARD_H
+
+//-------------------------------------------------------------------------------------
+
+#include "SpecialCard.h"
+#include <iostream>
+
+
+
+SpecialCard::SpecialCard(const std::string& color, const std::string& special)
+    : Card(color), special(special) {}
+
+void SpecialCard::printCard() const {
+    std::cout << "SpecialCard: Color=" << color << ", Special=" << special << std::endl;
+}
+
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include <memory>
+
+#include "NumberCard.h"
+#include "Player.h"
+#include "Game.h"
+
+void Test1_NumberCard() {
+    auto tmp = std::make_shared<NumberCard>("red", 9);
+    tmp->printCard();
+}
+
+void Test2_Player() {
+    auto card1 = std::make_shared<NumberCard>("red", 9);
+    auto card2 = std::make_shared<NumberCard>("blue", 4);
+
+    Player p1("Max");
+
+    p1.addCard(card1);
+    p1 += card2;
+
+    p1.showCards();
+}
+
+void Test3_Game() {
+    std::array<std::string, 8> names = {
+        "Mustermann", "Max", "John", "Jane", "Tim", "Kim", "Andreas", "Andrea"
+    };
+
+    Game myGame;
+    int numberPlayers = 2;
+
+    for (int i = 0; i < numberPlayers; ++i) {
+        myGame.addPlayerByName(names[i]);
+    }
+
+    myGame.startGame();
+    myGame.showDeckCards();
+}
+
+int main() {
+    Test1_NumberCard();
+    Test2_Player();
+    Test3_Game();
+
+    std::array<std::string, 8> names = {
+        "Mustermann", "Max", "John", "Jane", "Tim", "Kim", "Andreas", "Andrea"
+    };
+
+    Game myGame;
+    int numberPlayers = 2;
+
+    for (int i = 0; i < numberPlayers; ++i) {
+        myGame.addPlayerByName(names[i]);
+    }
+
+    myGame.startGame();
+    myGame.showPlayerCards();
+
+    return 0;
+}
+

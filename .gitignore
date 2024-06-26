@@ -1,3 +1,4 @@
 /Unterricht,
 .pptx
 /static-code-analysis-js/node_modules
+.vscode/
